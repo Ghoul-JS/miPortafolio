@@ -1,16 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import LanguageContext, { useLanguage } from '../i18n/LanguageContext';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 import translations from '../i18n/translations';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
+  const t = translations[language];
 
   const footerLinks = [
-    { name: translations[language].github_name, url: 'https://github.com/Ghoul-JS', key: 'github' },
-    { name: translations[language].linkedin_name, url: 'https://www.linkedin.com/in/jose-castro-096435343/', key: 'linkedin' },
-    { name: translations[language].instagram_name, url: 'https://www.instagram.com/joseph_spiegel.666/', key: 'instagram' },
+    { name: t.github_name, url: 'https://github.com/Ghoul-JS' },
+    { name: t.linkedin_name, url: 'https://www.linkedin.com/in/jose-castro-096435343/' },
+    { name: t.instagram_name, url: 'https://www.instagram.com/joseph_spiegel.666/' },
   ];
 
   return (
@@ -27,7 +28,7 @@ const Footer = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-blue-primary to-blue-secondary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold">JC</span>
             </div>
-            <span className="text-white font-bold">José Castro</span>
+            <span className="text-white font-bold">{t.footer_name}</span>
           </div>
 
           <div className="flex gap-8">
@@ -46,7 +47,7 @@ const Footer = () => {
           </div>
 
           <p className="text-gray-500 text-sm">
-            © {currentYear} {translations[language].footer_name}. {translations[language].footer_all_rights}
+            © {currentYear} {t.footer_name}. {t.footer_all_rights}
           </p>
         </motion.div>
 
@@ -62,7 +63,8 @@ const Footer = () => {
             className="p-3 rounded-full border border-blue-primary/30 text-blue-primary hover:bg-blue-primary/10 hover:border-blue-primary/80 transition-all"
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Scroll to top"
+            aria-label={t.scroll_top}
+            title={t.scroll_top}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V15a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />

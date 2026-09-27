@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
+import translations from '../i18n/translations';
 
 const GitHubIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -23,6 +25,8 @@ const ArrowIcon = () => (
 );
 
 const Projects = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const { ref, inView } = useInView({ threshold: 0.15 });
 
   const projects = [
@@ -70,7 +74,7 @@ const Projects = () => {
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0110.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Stripe', 'AWS'],
@@ -127,9 +131,9 @@ const Projects = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -24 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow mb-4 block">Trabajo Selecto</span>
+          <span className="section-eyebrow mb-4 block">{t.projects_title}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Mis <span className="text-gradient">Proyectos</span>
+            {t.projects_subtitle}
           </h2>
           <div className="section-line mt-4" />
         </motion.div>
@@ -152,7 +156,7 @@ const Projects = () => {
                 {/* Featured badge */}
                 {project.featured && (
                   <div className="absolute top-4 right-4 badge" style={{ color: '#34d399', borderColor: 'rgba(52,211,153,0.3)', background: 'rgba(52,211,153,0.08)' }}>
-                    Destacado
+                    {language === 'es' ? 'Destacado' : 'Featured'}
                   </div>
                 )}
 
@@ -231,7 +235,7 @@ const Projects = () => {
                   }}
                 >
                   <GitHubIcon />
-                  Ver Código
+                  {t.view_code}
                   <ArrowIcon />
                 </motion.a>
               </div>
@@ -255,7 +259,7 @@ const Projects = () => {
             whileTap={{ scale: 0.96 }}
           >
             <GitHubIcon />
-            Ver todos mis proyectos en GitHub
+            {t.see_all_projects}
             <ExternalIcon />
           </motion.a>
         </motion.div>

@@ -4,7 +4,7 @@
  * Uses useState + context pattern - no external dependencies
  */
 
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const LanguageContext = createContext({
   language: 'es',
@@ -23,6 +23,7 @@ export const LanguageProvider = ({ children }) => {
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
+  console.log('language', context);
   if (!context) {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }

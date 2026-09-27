@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
+import translations from '../i18n/translations';
 
 const Hero = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,7 +28,7 @@ const Hero = () => {
     },
   };
 
-  const words = ['Full Stack Developer', 'Ing. de Software', 'IA & Multiagentes', 'Creador de Soluciones'];
+  const words = [t.developer, t.role_1, t.role_2, t.role_3];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   useEffect(() => {
@@ -48,11 +53,11 @@ const Hero = () => {
           variants={itemVariants}
           className="text-blue-primary text-lg font-semibold mb-4 tracking-widest uppercase"
         >
-          Bienvenido a mi portafolio
+          {t.hero_welcome}
         </motion.p>
 
         <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-          <span className="block text-white">Hola, soy</span>
+          <span className="block text-white">{t.hero_hello}</span>
           <motion.span
             className="block text-gradient font-black animate-glow-text"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -86,9 +91,10 @@ const Hero = () => {
           variants={itemVariants}
           className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          Cursando <span className="text-blue-primary font-medium">Ingeniería de Software</span>, con Tecnología en Desarrollo de Software.
-          Especializado en stacks MERN/PERN y en el uso de{' '}
-          <span className="text-blue-primary font-medium">IA con multiagentes</span> para automatizaciones y desarrollo moderno.
+          {language === 'es' 
+            ? `Cursando Ingeniería de Software, con Tecnología en Desarrollo de Software. Especializado en stacks MERN/PERN y en el uso de IA con multiagentes para automatizaciones y desarrollo moderno.`
+            : `Studying Software Engineering, with Technology in Software Development. Specialized in MERN/PERN stacks and using AI with multiagents for automations and modern development.`
+          }
         </motion.p>
 
         <motion.div
@@ -102,7 +108,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Ver mis proyectos
+                {t.explore_projects}
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
                 </svg>
@@ -118,7 +124,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Visita mi GitHub
+            {t.github_visit}
           </motion.a>
         </motion.div>
 
@@ -127,7 +133,9 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-gray-400 text-sm mb-2">Desplázate para explorar</span>
+          <span className="text-gray-400 text-sm mb-2">
+            {language === 'es' ? 'Desplázate para explorar' : 'Scroll to explore'}
+          </span>
           <svg className="w-6 h-6 text-blue-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
