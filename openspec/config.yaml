@@ -1,0 +1,44 @@
+# openspec/config.yaml
+schema: spec-driven
+
+context: |
+  Project: portafolio-jose-castro
+  Type: Personal portfolio SPA (Single Page Application)
+  Stack: React 18 + Vite 5 + JavaScript (JSX) + Tailwind CSS 3 + Framer Motion 10
+  Routing: react-scroll (anchor-based smooth scroll, no react-router)
+  Styling: Tailwind utility classes + custom CSS (index.css) with glassmorphism tokens
+  Build: Vite 5, ESM modules, PostCSS + Autoprefixer
+  Testing: None configured
+  Linting: None configured
+  Architecture: Flat component structure — src/components/ (7 components) + src/hooks/
+  Components: Navbar, Hero, About, Skills, Projects, Contact, Footer
+  Hooks: useInView (custom intersection observer)
+
+rules:
+  proposal:
+    - Identify which components are affected
+    - Assess risk of breaking animations (Framer Motion) or scroll behavior
+    - Include rollback plan for visual regressions
+  specs:
+    - Use Given/When/Then format for interaction scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Reference specific component files by name
+  design:
+    - Document color tokens from tailwind.config.js before changing them
+    - Preserve glass-card, glow-border, text-gradient CSS classes as design system tokens
+    - Include before/after visual description for UI changes
+  tasks:
+    - Group by component (Navbar, Hero, About, Skills, Projects, Contact, Footer)
+    - Keep tasks completable in one session
+    - Use hierarchical numbering (1.1, 1.2, etc.)
+  apply:
+    - Follow existing Framer Motion animation patterns (containerVariants + itemVariants)
+    - Use useInView hook for scroll-triggered animations
+    - No emojis — SVG icons only (inline or imported)
+    - Apply glass-card class for new cards
+  verify:
+    - Check no emojis remain in JSX
+    - Verify all project links point to correct GitHub repos
+    - Confirm Tailwind classes resolve (no undefined custom tokens)
+  archive:
+    - Warn before removing components or CSS tokens used in multiple files
