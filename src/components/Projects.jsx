@@ -33,8 +33,9 @@ const Projects = () => {
     {
       id: 1,
       title: 'Libro Virtual Agroindustrial',
-      description:
-        'Plataforma educativa interactiva con simulaciones para el sector agroindustrial. Implementa modelos de simulación de procesos, visualizaciones dinámicas y contenido técnico estructurado para estudiantes y profesionales.',
+      description: language === 'es' 
+        ? 'Plataforma educativa interactiva con simulaciones para el sector agroindustrial. Implementa modelos de simulación de procesos, visualizaciones dinámicas y contenido técnico estructurado para estudiantes y profesionales.'
+        : 'Interactive educational platform with simulations for the agro-industrial sector. Implements process simulation models, dynamic visualizations, and structured technical content for students and professionals.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -51,8 +52,9 @@ const Projects = () => {
     {
       id: 2,
       title: 'Metal Crypt',
-      description:
-        'Plataforma para registro de bandas musicales con autenticación, creación de álbumes y canciones. Backend robusto con API REST y frontend moderno.',
+      description: language === 'es'
+        ? 'Plataforma para registro de bandas musicales con autenticación, creación de álbumes y canciones. Backend robusto con API REST y frontend moderno.'
+        : 'Platform for registering musical bands with authentication, album creation, and songs. Robust backend with REST API and modern frontend.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -69,8 +71,9 @@ const Projects = () => {
     {
       id: 3,
       title: 'Online Nature',
-      description:
-        'Plataforma web para preservación de fauna y flora. Incluye sistema de donaciones con métodos de pago integrados, gestión de campañas y panel de administración.',
+      description: language === 'es'
+        ? 'Plataforma web para preservación de fauna y flora. Incluye sistema de donaciones con métodos de pago integrados, gestión de campañas y panel de administración.'
+        : 'Web platform for the preservation of flora and fauna. Includes donation system with integrated payment methods, campaign management, and admin panel.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -87,8 +90,9 @@ const Projects = () => {
     {
       id: 4,
       title: 'PI - Individual Project',
-      description:
-        'Proyecto individual del bootcamp. API backend completa y frontend con funcionalidades avanzadas, autenticación, filtros y paginación.',
+      description: language === 'es'
+        ? 'Proyecto individual del bootcamp. API backend completa y frontend con funcionalidades avanzadas, autenticación, filtros y paginación.'
+        : 'Individual bootcamp project. Complete backend API and frontend with advanced features, authentication, filters, and pagination.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}

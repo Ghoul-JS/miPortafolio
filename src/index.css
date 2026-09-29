@@ -31,6 +31,20 @@ body {
   --secondary: #00a3ff;
 }
 
+/* Light Theme Overrides for hardcoded Tailwind classes */
+[data-theme="light"] .text-white {
+  color: var(--text) !important;
+}
+[data-theme="light"] .text-gray-200,
+[data-theme="light"] .text-gray-300,
+[data-theme="light"] .text-gray-400,
+[data-theme="light"] .text-gray-500 {
+  color: #4b5563 !important; /* Tailwind gray-600 */
+}
+[data-theme="light"] .bg-[#050816] {
+  background-color: var(--bg) !important;
+}
+
 /* Base styles */
 body {
   background: var(--bg);
@@ -157,6 +171,14 @@ body::after {
   overflow: hidden;
 }
 
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
 .glass-card::before {
   content: '';
   position: absolute;
@@ -169,6 +191,14 @@ body::after {
   pointer-events: none;
 }
 
+[data-theme="light"] .glass-card::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    transparent 50%
+  );
+}
+
 .glass-card:hover {
   border-color: rgba(0, 102, 255, 0.4);
   box-shadow:
@@ -176,6 +206,14 @@ body::after {
     0 8px 40px rgba(0, 102, 255, 0.15),
     0 0 60px rgba(0, 102, 255, 0.05);
   transform: translateY(-2px);
+}
+
+[data-theme="light"] .glass-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(0, 102, 255, 0.2) inset,
+    0 8px 40px rgba(0, 102, 255, 0.1),
+    0 0 60px rgba(0, 102, 255, 0.05);
 }
 
 /* Legacy glow-border for backward compat */

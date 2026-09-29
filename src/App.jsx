@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#050816] min-h-screen">
+    <div className="min-h-screen">
       <div
         className="fixed w-6 h-6 border border-blue-primary/60 rounded-full pointer-events-none z-50 hidden lg:block"
         style={{

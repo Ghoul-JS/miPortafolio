@@ -3,15 +3,21 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
 import translations from '../i18n/translations';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 const Navbar = ({ scrollY }) => {
   const { language, setLanguage } = useLanguage();
+  const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = translations[language]; // Obtener traducciones
   
   const toggleLanguage = () => {
     setLanguage(language === 'es' ? 'en' : 'es');
     setMobileMenuOpen(false);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   const navItems = [
@@ -68,6 +74,16 @@ const Navbar = ({ scrollY }) => {
 
           {/* CONTROLS DERECHA */}
           <div className="flex items-center gap-4">
+            {/* Theme toggle (Desktop Only) */}
+            <motion.button
+              className="hidden md:flex text-white opacity-80 hover:text-blue-primary transition-colors px-3 py-1 rounded-lg border border-blue-primary/30 hover:border-blue-primary/60 text-sm font-medium items-center justify-center"
+              onClick={toggleTheme}
+              whileTap={{ scale: 0.9 }}
+              title={theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </motion.button>
+
             {/* Language toggle */}
             <motion.button
               className="text-white opacity-80 hover:text-blue-primary transition-colors px-3 py-1 rounded-lg border border-blue-primary/30 hover:border-blue-primary/60 text-sm font-medium"

@@ -97,7 +97,11 @@ const About = () => {
         >
           <span className="section-eyebrow mb-4 block">{t.about_subtitle}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            {t.about_title} <span className="text-gradient">mí</span>
+            {language === 'es' ? (
+              <>{t.about_title} <span className="text-gradient">mí</span></>
+            ) : (
+              <>{t.about_title}</>
+            )}
           </h2>
           <div className="section-line mt-4" />
         </motion.div>

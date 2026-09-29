@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
+import translations from '../i18n/translations';
 
 const Skills = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const { ref, inView } = useInView({ threshold: 0.15 });
 
   const skillCategories = [
@@ -91,9 +95,13 @@ const Skills = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -24 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow mb-4 block">Stack Técnico</span>
+          <span className="section-eyebrow mb-4 block">{t.skills_title}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Mi <span className="text-gradient">Conjunto de Habilidades</span>
+            {language === 'es' ? (
+              <>Mi <span className="text-gradient">Conjunto de Habilidades</span></>
+            ) : (
+              <><span className="text-gradient">My</span> Skill Set</>
+            )}
           </h2>
           <div className="section-line mt-4" />
         </motion.div>
@@ -151,7 +159,7 @@ const Skills = () => {
                   d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            Nivel de Dominio
+            {t.proficiency_title}
           </h3>
 
           <div className="space-y-6">
